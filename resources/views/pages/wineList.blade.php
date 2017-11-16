@@ -7,8 +7,8 @@
             <div>
                 <ul class="thumbnails">
                     @foreach ($wines as $wine)
-                    <li class="span3"><a href="#"
-                                         class="thumbnail plain">
+                    <li class="span3">
+                        <a href="{{ route('wine.show', $wine->id) }}" class="thumbnail plain">
                             <img src='{{ asset("images/$wine->wineImage") }}' height="150" width="125" alt="">
                             <h5>{{ $wine->name }}</h5>
                             <p>{{ $wine->year }} {{ $wine->grapes }}<br>

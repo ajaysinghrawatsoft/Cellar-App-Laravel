@@ -31,7 +31,6 @@
                 <td>{{ $wine->region }}</td>
                 <td>{{ $wine->year }}</td>
                 <td>
-                    <a class="btn btn-info" href="{{ route('wine.show', $wine->id) }}">View</a>
                     <a class="btn btn-primary" href="{{ route('wine.edit',$wine->id) }}">Edit</a>
                     {!! Form::open(['method' => 'DELETE','route' => ['wine.destroy', $wine->id],'style'=>'display:inline']) !!}
                     {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
