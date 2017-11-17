@@ -7,6 +7,9 @@ use App\Wine;
 
 class WineController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth', ['only' => ['create', 'store', 'edit', 'update', 'destroy', 'index']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +17,8 @@ class WineController extends Controller
      */
     public function index(Request $request)
     {
+        //print_r(Auth::user());die;
+
         $wines = Wine::orderBy('id','DESC')->paginate(10);
         return view('pages.list',compact('wines'))
             ->with('i', ($request->input('page', 1) - 1) * 10);

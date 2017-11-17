@@ -14,3 +14,6 @@
 Route::get('/', 'WineController@wineList');
 
 Route::resource('wine','WineController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

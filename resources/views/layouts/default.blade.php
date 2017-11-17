@@ -17,11 +17,27 @@
                 <div class="nav-collapse">
                     <ul class="nav">
                         <li class="add-menu"><a href="{{ route('wine.create') }}"><i class="fa fa-user"></i> Add Wine</a></li>
+                        @auth
                         <li class="add-menu"><a href="{{ route('wine.index')  }}"><i class="fa fa-glass"></i> Wine List</a></li>
+                        @endauth
                     </ul>
 
                     <ul class="nav pull-right">
-                        <li class="about-menu"><a href="javascript:void(0)">Login</a></li>
+                        @guest
+                        <li class="about-menu"><a href="{{ route('login') }}">Login</a></li>
+                        @else
+                        <li>
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                        @endguest
                     </ul>
                 </div>
                 </div>
